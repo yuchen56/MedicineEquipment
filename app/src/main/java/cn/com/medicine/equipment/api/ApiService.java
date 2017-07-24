@@ -19,7 +19,6 @@ public interface ApiService {
     @POST("login.json")
     Observable<HttpResult<UserDto>> getUserInfo(@Field("userId") String userId, @Field("password") String password, @Field("macId") String macId);
 
-
     //获取首页详情
     @GET("api/getHomeInfo")
     Observable<HttpResult<HomeDto>> getHomeInfo();
