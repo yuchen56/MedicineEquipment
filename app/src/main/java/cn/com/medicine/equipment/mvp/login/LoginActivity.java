@@ -1,16 +1,14 @@
 package cn.com.medicine.equipment.mvp.login;
 
-import android.content.Context;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.com.medicine.equipment.R;
-import cn.com.medicine.equipment.dto.UserDto;
+import cn.com.medicine.equipment.dto.WeatherDto;
 import cn.com.medicine.equipment.mvp.login.contract.LoginContract;
 import cn.com.medicine.equipment.mvp.login.presenter.LoginPresenterImpl;
 import lib.com.hxin.base.BaseActivity;
@@ -18,14 +16,14 @@ import lib.com.hxin.base.BaseActivity;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends BaseActivity implements LoginContract.View{
+public class LoginActivity extends BaseActivity implements LoginContract.View {
 
-    @BindView(R.id.email)
-    EditText email;
-    @BindView(R.id.password)
-    EditText password;
-    @BindView(R.id.email_sign_in_button)
-    Button emailSignInButton;
+    @BindView(R.id.login_city)
+    EditText loginCity;
+    @BindView(R.id.login_get)
+    Button loginGet;
+    @BindView(R.id.login_show_txt)
+    TextView loginShowTxt;
 
     private LoginContract.Presenter presenter;
 
@@ -33,7 +31,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View{
     protected void loadViewLayout() {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        emailSignInButton.setOnClickListener(new View.OnClickListener() {
+        loginGet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
@@ -51,20 +49,11 @@ public class LoginActivity extends BaseActivity implements LoginContract.View{
         presenter = new LoginPresenterImpl(this);//获取presenter对象
     }
 
-    private String emailStr;
-    private String passwordStr;
+    private String cityStr;
 
     private void attemptLogin() {//出发登录操作
-        emailStr = email.getText().toString();
-        passwordStr = password.getText().toString();
-        WifiManager wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-        WifiInfo info = wifi.getConnectionInfo();
-
-        UserDto dto = new UserDto();
-        dto.setUserId(emailStr);
-        dto.setPassword(passwordStr);
-        dto.setMacId(info.getMacAddress());
-        presenter.Load(dto);
+        cityStr = loginCity.getText().toString();
+        presenter.Load(cityStr);
     }
 
     @Override
@@ -78,8 +67,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.View{
     }
 
     @Override
-    public void newData(UserDto data) {
+    public void newData(WeatherDto data) {
         //请求成功后被回调
+        loginShowTxt.setText(data.toString());
     }
 
     @Override

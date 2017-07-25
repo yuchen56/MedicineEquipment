@@ -7,7 +7,8 @@ import cn.com.medicine.equipment.cache.CacheProviders;
 import cn.com.medicine.equipment.common.Contants;
 import cn.com.medicine.equipment.dto.HomeDto;
 import cn.com.medicine.equipment.dto.HttpResult;
-import cn.com.medicine.equipment.dto.UserDto;
+import cn.com.medicine.equipment.dto.HttpResult2;
+import cn.com.medicine.equipment.dto.WeatherDto;
 import cn.com.medicine.equipment.exception.ApiException;
 import io.rx_cache.DynamicKey;
 import io.rx_cache.EvictDynamicKey;
@@ -50,17 +51,17 @@ public class HttpData extends RetrofitUtils {
      *  true 删除缓存重新加载；
      *  fasle 优先使用缓存
      */
-    public void getUserInfo(boolean isload,UserDto dto, Observer<UserDto> observer) {
+    public void getWeather(boolean isload,String city, Observer<WeatherDto> observer) {
 
-        Observable observable = service.getUserInfo(dto.getUserId(), dto.getPassword(), dto.getMacId()).map(new HttpResultFunc<UserDto>());
-        Observable observableCache = providers.getUserInfo(observable, new DynamicKey(dto.getUserId()),
-                new EvictDynamicKey(isload)).map(new HttpResultFuncCcche<UserDto>());
+        Observable observable = service.getWeather(2, "大连", "14a0b68aeef74fc6cac297bfd19a4bbb").map(new HttpResultFunc2<WeatherDto>());//从服务器端获取数据
+        Observable observableCache = providers.getWeather(observable, new DynamicKey(city),//对数据进行缓存。
+                new EvictDynamicKey(isload)).map(new HttpResultFuncCcche<WeatherDto>());
         setSubscribe(observableCache, observer);
 //        setSubscribe(observable, observer);
     }
 
     public void getHomeInfo(boolean isload,Observer<HomeDto> observer){
-        Observable observable=service.getHomeInfo().map(new HttpResultFunc<HomeDto>());;
+        Observable observable=service.getHomeInfo().map(new HttpResultFunc<HomeDto>());
         Observable observableCache=providers.getHomeInfo(observable,new DynamicKey("首页配置"),new EvictDynamicKey(isload)).map(new HttpResultFuncCcche<HomeDto>());
         setSubscribe(observableCache,observer);
     }
@@ -92,6 +93,18 @@ public class HttpData extends RetrofitUtils {
                 throw new ApiException(httpResult);
             }
             return httpResult.getData();
+        }
+    }
+
+    private  class HttpResultFunc2<T> implements Func1<HttpResult2<T>, T> {
+
+        @Override
+        public T call(HttpResult2<T> httpResult) {
+            if (!httpResult.getResultcode().equals("200") ) {
+//                throw new ApiException(httpResult);
+                System.out.println("httpResult" + httpResult);
+            }
+            return httpResult.getResult();
         }
     }
     /**

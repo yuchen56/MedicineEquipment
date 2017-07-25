@@ -2,11 +2,10 @@ package cn.com.medicine.equipment.api;
 
 import cn.com.medicine.equipment.dto.HomeDto;
 import cn.com.medicine.equipment.dto.HttpResult;
-import cn.com.medicine.equipment.dto.UserDto;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
+import cn.com.medicine.equipment.dto.HttpResult2;
+import cn.com.medicine.equipment.dto.WeatherDto;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -15,9 +14,12 @@ import rx.Observable;
 
 public interface ApiService {
 
-    @FormUrlEncoded
-    @POST("login.json")
-    Observable<HttpResult<UserDto>> getUserInfo(@Field("userId") String userId, @Field("password") String password, @Field("macId") String macId);
+    //@FormUrlEncoded
+    @GET("index")
+    Observable<HttpResult2<WeatherDto>> getWeather(@Query("format") int format
+            , @Query("cityname")String cityname
+            , @Query("key")String citynakeyme);
+    //@Field("userId") String userId, @Field("password") String password, @Field("macId") String macId
 
     //获取首页详情
     @GET("api/getHomeInfo")

@@ -10,7 +10,9 @@ public class Contants {
     /** 服务器地址 */
 //    public static String API_SERVER = "http://172.16.63.86:8080/gds/internal/";
 
-    public static String API_SERVER = "http://mylance.top";
+    //public static String API_SERVER = "http://mylance.top";
+
+    public static String API_SERVER = "http://v.juhe.cn/weather/";
     /** 获取首页信息 */
 
     /** 登录接口 */
