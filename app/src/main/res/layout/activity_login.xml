@@ -7,31 +7,59 @@
     tools:context="cn.com.medicine.equipment.mvp.login.LoginActivity">
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/login_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="用户名"
+        android:hint="城市名称"
         android:inputType="textEmailAddress"
         android:maxLines="1" />
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="密码"
-        android:imeActionId="@+id/login"
-        android:imeOptions="actionUnspecified"
-        android:inputType="textPassword"
-        android:maxLines="1"
-        android:singleLine="true" />
-
     <Button
-        android:id="@+id/email_sign_in_button"
+        android:id="@+id/login_get"
         style="?android:textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="登录"
+        android:text="获取"
         android:textStyle="bold" />
+
+    <!--<android.support.v7.widget.RecyclerView-->
+    <!--android:id="@+id/login_rv"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+
+    <!--</android.support.v7.widget.RecyclerView>-->
+
+    <lib.com.hxin.views.SpringView
+        android:id="@+id/login_spring"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <lib.com.hxin.views.BaseScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:background="@android:color/white"
+                android:padding="10dp"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/login_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+
+            </LinearLayout>
+
+
+
+        </lib.com.hxin.views.BaseScrollView>
+    </lib.com.hxin.views.SpringView>
 
 </LinearLayout>

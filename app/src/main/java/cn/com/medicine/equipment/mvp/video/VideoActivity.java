@@ -12,6 +12,10 @@ import fm.jiecao.jcvideoplayer_lib.JCBuriedPointStandard;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
+/**
+ * Created by YongChen.Yu on 2017/7/26.
+ * 用于播放视频
+ */
 public class VideoActivity extends Activity {
 
     @BindView(R.id.video_jcv)

@@ -1,6 +1,6 @@
 package cn.com.medicine.equipment.mvp.login.contract;
 
-import cn.com.medicine.equipment.dto.UserDto;
+import cn.com.medicine.equipment.dto.WeatherDto;
 import cn.com.medicine.equipment.lictener.OnLoadDataListener;
 import lib.com.hxin.base.BaseView;
 
@@ -12,18 +12,18 @@ public class LoginContract {
 
     public interface View extends BaseView{
         //数据加载成功
-        void newData(UserDto data);
+        void newData(WeatherDto data);
         //显示加载失败
         void showLoadFailMsg();
     }
 
     public interface Presenter {
         void onDestroy();
-        void Load(UserDto dto);
+        void Load(String cityname);
 
     }
 
     public interface Model {
-        void doLoginAct(UserDto dto, final OnLoadDataListener listener);
+        void getWeather(String cityStr, final OnLoadDataListener listener);
     }
 }

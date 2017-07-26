@@ -3,7 +3,7 @@ package cn.com.medicine.equipment.cache;
 import java.util.concurrent.TimeUnit;
 
 import cn.com.medicine.equipment.dto.HomeDto;
-import cn.com.medicine.equipment.dto.UserDto;
+import cn.com.medicine.equipment.dto.WeatherDto;
 import io.rx_cache.DynamicKey;
 import io.rx_cache.EvictDynamicKey;
 import io.rx_cache.LifeCache;
@@ -30,7 +30,7 @@ public interface CacheProviders {
 
     @Headers({HEADER_API_VERSION})
     @LifeCache(duration = 7, timeUnit = TimeUnit.DAYS)//缓存七天
-    Observable<Reply<UserDto>> getUserInfo(Observable<UserDto> oRepos, DynamicKey userName, EvictDynamicKey evictDynamicKey);
+    Observable<Reply<WeatherDto>> getWeather(Observable<WeatherDto> oRepos, DynamicKey cityname, EvictDynamicKey evictDynamicKey);
 
 
     //获取首页配置数据 banner 最热 最新  缓存时间7天

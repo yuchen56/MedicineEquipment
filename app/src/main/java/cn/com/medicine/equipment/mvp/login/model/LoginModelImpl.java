@@ -1,5 +1,5 @@
 package cn.com.medicine.equipment.mvp.login.model;
-import cn.com.medicine.equipment.dto.UserDto;
+import cn.com.medicine.equipment.dto.WeatherDto;
 import cn.com.medicine.equipment.http.HttpData;
 import cn.com.medicine.equipment.lictener.OnLoadDataListener;
 import cn.com.medicine.equipment.mvp.login.contract.LoginContract;
@@ -12,8 +12,8 @@ import rx.Observer;
 public class LoginModelImpl implements LoginContract.Model{
 
     @Override
-    public void doLoginAct(UserDto dto, final OnLoadDataListener listener) {
-        HttpData.getInstance().getUserInfo(false, dto, new Observer<UserDto>() {
+    public void getWeather(String city, final OnLoadDataListener listener) {
+        HttpData.getInstance().getWeather(true, city, new Observer<WeatherDto>() {
             @Override
             public void onCompleted() {
 
@@ -26,8 +26,8 @@ public class LoginModelImpl implements LoginContract.Model{
             }
 
             @Override
-            public void onNext(UserDto userDto) {
-                listener.onSuccess(userDto);
+            public void onNext(WeatherDto dto) {
+                listener.onSuccess(dto);
             }
         });
     }

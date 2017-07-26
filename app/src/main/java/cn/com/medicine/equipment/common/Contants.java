@@ -10,8 +10,10 @@ public class Contants {
     /** 服务器地址 */
 //    public static String API_SERVER = "http://172.16.63.86:8080/gds/internal/";
 
-    public static String API_SERVER = "http://mylance.top";
-    /** 获取首页信息 */
+    //public static String API_SERVER = "http://mylance.top";
+
+    //需要以【/】结束
+    public static String API_SERVER = "http://v.juhe.cn/weather/";
 
     /** 登录接口 */
     public static final String LOGIN_PATH = "login.json";

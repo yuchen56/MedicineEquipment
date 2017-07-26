@@ -1,6 +1,6 @@
 package cn.com.medicine.equipment.mvp.login.presenter;
 
-import cn.com.medicine.equipment.dto.UserDto;
+import cn.com.medicine.equipment.dto.WeatherDto;
 import cn.com.medicine.equipment.lictener.OnLoadDataListener;
 import cn.com.medicine.equipment.mvp.login.contract.LoginContract;
 import cn.com.medicine.equipment.mvp.login.model.LoginModelImpl;
@@ -10,7 +10,7 @@ import lib.com.hxin.base.BasePresenter;
 * Created by YongChen.Yu on 2017/07/20
 */
 
-public class LoginPresenterImpl extends BasePresenter implements LoginContract.Presenter, OnLoadDataListener<UserDto> {
+public class LoginPresenterImpl extends BasePresenter implements LoginContract.Presenter, OnLoadDataListener<WeatherDto> {
 
     private LoginContract.View view;
     private LoginContract.Model model;
@@ -21,7 +21,7 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.P
     }
 
     @Override
-    public void onSuccess(UserDto data) {
+    public void onSuccess(WeatherDto data) {
         view.newData(data);
         view.hideProgress();
     }
@@ -32,8 +32,8 @@ public class LoginPresenterImpl extends BasePresenter implements LoginContract.P
     }
 
     @Override
-    public void Load(UserDto dto) {
-        model.doLoginAct(dto, this);
+    public void Load(String cityname) {
+        model.getWeather(cityname, this);
         view.showProgress();
     }
 
