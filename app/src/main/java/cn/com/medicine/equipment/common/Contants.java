@@ -12,8 +12,8 @@ public class Contants {
 
     //public static String API_SERVER = "http://mylance.top";
 
+    //需要以【/】结束
     public static String API_SERVER = "http://v.juhe.cn/weather/";
-    /** 获取首页信息 */
 
     /** 登录接口 */
     public static final String LOGIN_PATH = "login.json";

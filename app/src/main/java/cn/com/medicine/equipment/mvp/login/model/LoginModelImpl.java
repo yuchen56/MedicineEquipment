@@ -13,7 +13,7 @@ public class LoginModelImpl implements LoginContract.Model{
 
     @Override
     public void getWeather(String city, final OnLoadDataListener listener) {
-        HttpData.getInstance().getWeather(false, city, new Observer<WeatherDto>() {
+        HttpData.getInstance().getWeather(true, city, new Observer<WeatherDto>() {
             @Override
             public void onCompleted() {
 

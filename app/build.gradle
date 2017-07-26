@@ -29,4 +29,6 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'fm.jiecao:jiecaovideoplayer:4.6.4' //视频播放
 
+//    compile 'com.android.support:palette-v7:25.3.0'//渐变色
+
 }

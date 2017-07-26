@@ -13,6 +13,7 @@
         android:hint="城市名称"
         android:inputType="textEmailAddress"
         android:maxLines="1" />
+
     <Button
         android:id="@+id/login_get"
         style="?android:textAppearanceSmall"
@@ -22,10 +23,43 @@
         android:text="获取"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/login_show_txt"
+    <!--<android.support.v7.widget.RecyclerView-->
+    <!--android:id="@+id/login_rv"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+
+    <!--</android.support.v7.widget.RecyclerView>-->
+
+    <lib.com.hxin.views.SpringView
+        android:id="@+id/login_spring"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1">
+
+        <lib.com.hxin.views.BaseScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:background="@android:color/white"
+                android:padding="10dp"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/login_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+
+            </LinearLayout>
+
+
+
+        </lib.com.hxin.views.BaseScrollView>
+    </lib.com.hxin.views.SpringView>
 
 </LinearLayout>

@@ -90,7 +90,7 @@ public class HttpData extends RetrofitUtils {
         @Override
         public T call(HttpResult<T> httpResult) {
             if (!httpResult.getResultCd().equals("00") ) {
-                throw new ApiException(httpResult);
+//                throw new ApiException(httpResult);
             }
             return httpResult.getData();
         }
@@ -101,8 +101,7 @@ public class HttpData extends RetrofitUtils {
         @Override
         public T call(HttpResult2<T> httpResult) {
             if (!httpResult.getResultcode().equals("200") ) {
-//                throw new ApiException(httpResult);
-                System.out.println("httpResult" + httpResult);
+                throw new ApiException(httpResult);
             }
             return httpResult.getResult();
         }
