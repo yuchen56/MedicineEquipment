@@ -49,12 +49,12 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             case R.id.main_p2_rb:
                 controller.showFragment(1);
                 break;
-            case R.id.main_p3_rb:
-                controller.showFragment(2);
-                break;
-            case R.id.main_p4_rb:
-                controller.showFragment(3);
-                break;
+//            case R.id.main_p3_rb:
+//                controller.showFragment(2);
+//                break;
+//            case R.id.main_p4_rb:
+//                controller.showFragment(3);
+//                break;
         }
     }
 }

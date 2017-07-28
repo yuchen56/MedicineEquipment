@@ -32,25 +32,25 @@
                 style="@style/RadioButtonBottomTab"
                 android:checked="true"
                 android:drawableTop="@drawable/tab_0_back"
-                android:text="P1" />
+                android:text="首页" />
 
             <RadioButton
                 android:id="@+id/main_p2_rb"
                 style="@style/RadioButtonBottomTab"
                 android:drawableTop="@drawable/tab_1_back"
-                android:text="P2" />
+                android:text="视频" />
 
-            <RadioButton
-                android:id="@+id/main_p3_rb"
-                style="@style/RadioButtonBottomTab"
-                android:drawableTop="@drawable/tab_2_back"
-                android:text="P3" />
+            <!--<RadioButton-->
+                <!--android:id="@+id/main_p3_rb"-->
+                <!--style="@style/RadioButtonBottomTab"-->
+                <!--android:drawableTop="@drawable/tab_2_back"-->
+                <!--android:text="P3" />-->
 
-            <RadioButton
-                android:id="@+id/main_p4_rb"
-                style="@style/RadioButtonBottomTab"
-                android:drawableTop="@drawable/tab_3_back"
-                android:text="P4" />
+            <!--<RadioButton-->
+                <!--android:id="@+id/main_p4_rb"-->
+                <!--style="@style/RadioButtonBottomTab"-->
+                <!--android:drawableTop="@drawable/tab_3_back"-->
+                <!--android:text="P4" />-->
         </RadioGroup>
     </LinearLayout>
 

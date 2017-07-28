@@ -12,6 +12,6 @@ public class MEApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        FileUtil.setDirectoryName("ME_FILE_CACHE");//设置文件的缓存地质
+        FileUtil.setDirectoryName("ME_FILE_CACHE");//设置文件的缓存地址
     }
 }

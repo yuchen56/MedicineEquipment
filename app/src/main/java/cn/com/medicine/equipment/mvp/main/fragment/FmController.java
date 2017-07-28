@@ -49,10 +49,10 @@ public class FmController {
      */
     private void initFragmentTab() {
         fmList = new ArrayList<>();
-        fmList.add(new P1_Fragment());
-        fmList.add(new P2_Fragment());
-        fmList.add(new P3_Fragment());
-        fmList.add(new P4_Fragment());
+        fmList.add(new P1_Fragment());//首页
+        fmList.add(new P2_Fragment());//我的视频
+//        fmList.add(new P3_Fragment());
+//        fmList.add(new P4_Fragment());
 
         FragmentTransaction ft = fmger.beginTransaction();
         for (Fragment fragment : fmList) {
