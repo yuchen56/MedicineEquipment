@@ -8,7 +8,7 @@ import lib.com.hxin.http.RxManager;
  * Created by YongChen.Yu on 2017/2/20.
  */
 
-public abstract class BasePresenter<E,T> {
+public abstract class BasePresenter<E, T> {
     public Context context;
     public E mModel;
     public T mView;
@@ -19,8 +19,15 @@ public abstract class BasePresenter<E,T> {
         this.mModel = m;
     }
 
+    public RxManager getmRxManager() {
+        return mRxManager;
+    }
+
     public void onDestroy() {
         mRxManager.clear();
+
         mView = null;
     }
+
+
 }

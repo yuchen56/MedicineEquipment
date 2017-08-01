@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,8 +21,10 @@ import cn.com.medicine.equipment.views.AcFunHeader;
 import lib.com.hxin.activity.PermissionsActivity;
 import lib.com.hxin.base.BaseActivity;
 import lib.com.hxin.base.BaseAdapter;
+import lib.com.hxin.http.RxManager;
 import lib.com.hxin.utils.PermissionsChecker;
 import lib.com.hxin.views.SpringView;
+import rx.functions.Action1;
 
 /**
  * 用于测试矿建
@@ -39,6 +42,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, S
 
     private LoginContract.Presenter presenter;
     private WeatherAdapter adapter;
+    private RxManager rxManager;
 
     ////////////权限检查-start////////////////////
     private static final int REQUEST_CODE = 0; // 请求码
@@ -71,6 +75,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, S
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(LoginActivity.this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         loginRv.setLayoutManager(linearLayoutManager);
+
 
         loginRv.setHasFixedSize(true);
         adapter = new WeatherAdapter(R.layout.itm_weather, null);
@@ -109,6 +114,13 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, S
     @Override
     protected void processLogic() {
         presenter = new LoginPresenterImpl(this);//获取presenter对象
+        rxManager = presenter.getRxManager();//可以代替三大组件进行高效的数据传递
+        rxManager.on("GET_WEATHER", new Action1<WeatherDto>() {
+            @Override
+            public void call(WeatherDto dto) {
+                Toast.makeText(mContext,dto.getSk().getWind_direction().toString(),Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private String cityStr;

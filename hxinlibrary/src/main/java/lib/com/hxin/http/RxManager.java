@@ -28,12 +28,12 @@ public class RxManager {
         mObservables.put(eventName, mObservable);
         //订阅管理
         mCompositeSubscription.add(mObservable.observeOn(AndroidSchedulers.mainThread())
-                .subscribe(action1, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        throwable.printStackTrace();
-                    }
-                }));
+            .subscribe(action1, new Action1<Throwable>() {
+                @Override
+                public void call(Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+            }));
     }
 
     /**

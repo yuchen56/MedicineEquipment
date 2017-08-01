@@ -1,6 +1,7 @@
 package cn.com.medicine.equipment.mvp.main.contract;
 
 import cn.com.medicine.equipment.lictener.OnLoadDataListener;
+import lib.com.hxin.base.BaseView;
 
 /**
  * Created by YongChen.Yu on 2017/7/27.
@@ -8,7 +9,7 @@ import cn.com.medicine.equipment.lictener.OnLoadDataListener;
 
 public class P2Contract {
 
-    public interface View {
+    public interface View extends BaseView {
         //加载新数据
         void newDatas(String data);
         //显示加载失败

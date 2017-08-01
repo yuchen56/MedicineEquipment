@@ -104,4 +104,14 @@ public class P2_Fragment extends BaseFragment implements P2Contract.View, Spring
     public void showLoadFailMsg() {
 
     }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
 }

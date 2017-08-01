@@ -13,9 +13,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!--危险权限-->
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!--一般权限-->
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
     <application
         android:name=".application.MEApplication"
@@ -28,14 +28,8 @@
         <activity android:name=".mvp.main.MainActivity" />
         <activity
             android:name=".mvp.login.LoginActivity"
-            android:theme="@style/AppTheme"
-            android:label="@string/title_activity_login">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme">
 
         </activity>
         <activity android:name=".mvp.welcome.WelcomeActivity">
@@ -48,14 +42,22 @@
 
         </activity>
 
-        <activity android:name=".mvp.photo.PhotoDetailActivity"
+        <activity
+            android:name=".mvp.photo.PhotoDetailActivity"
             android:screenOrientation="portrait">
 
 
         </activity>
 
-        <activity android:name="lib.com.hxin.activity.PermissionsActivity"
-            />
+        <activity android:name="lib.com.hxin.activity.PermissionsActivity" />
+
+        <activity android:name=".mvp.palette.PaletteActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
     </application>
 
