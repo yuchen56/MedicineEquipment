@@ -31,6 +31,12 @@
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
         <activity android:name=".mvp.welcome.WelcomeActivity">
 
@@ -52,11 +58,7 @@
         <activity android:name="lib.com.hxin.activity.PermissionsActivity" />
 
         <activity android:name=".mvp.palette.PaletteActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
     </application>

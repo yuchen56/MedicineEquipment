@@ -2,6 +2,7 @@ package cn.com.medicine.equipment.mvp.login;
 
 import android.Manifest;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -18,6 +19,7 @@ import cn.com.medicine.equipment.mvp.login.contract.LoginContract;
 import cn.com.medicine.equipment.mvp.login.presenter.LoginPresenterImpl;
 import cn.com.medicine.equipment.views.AcFunFooter;
 import cn.com.medicine.equipment.views.AcFunHeader;
+import cn.com.medicine.equipment.views.LVCircularRing;
 import lib.com.hxin.activity.PermissionsActivity;
 import lib.com.hxin.base.BaseActivity;
 import lib.com.hxin.base.BaseAdapter;
@@ -39,6 +41,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, S
     RecyclerView loginRv;
     @BindView(R.id.login_spring)
     SpringView loginSpring;
+    @BindView(R.id.login_lvc)
+    LVCircularRing loginLvc;
+
 
     private LoginContract.Presenter presenter;
     private WeatherAdapter adapter;
@@ -84,6 +89,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, S
 
         mPermissionsChecker = new PermissionsChecker(this);
 
+        loginLvc.setViewColor(Color.argb(100, 255, 255, 255));
+        loginLvc.setBarColor(Color.YELLOW);
+        loginLvc.startAnim();
 
     }
 
@@ -118,7 +126,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, S
         rxManager.on("GET_WEATHER", new Action1<WeatherDto>() {
             @Override
             public void call(WeatherDto dto) {
-                Toast.makeText(mContext,dto.getSk().getWind_direction().toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, dto.getSk().getWind_direction().toString(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -157,6 +165,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, S
     protected void onDestroy() {
         super.onDestroy();
         presenter.onDestroy();//关闭view防止mvp内存泄露
+        ButterKnife.bind(this);
     }
 
     @Override
@@ -168,5 +177,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, S
     public void onLoadmore() {//加载更多
 
     }
+
 }
 
